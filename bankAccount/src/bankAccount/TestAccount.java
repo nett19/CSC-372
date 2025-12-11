@@ -1,0 +1,61 @@
+package bankAccount;
+
+public class TestAccount {
+	public static void main(String[] args) {
+		System.out.println("Testing BankAccount Superclass");
+		BankAccount genericAccount = new BankAccount();
+		
+		//setters
+		genericAccount.setFirstName("John");
+        genericAccount.setLastName("Doe");
+        genericAccount.setAccountID(1001);
+        
+        genericAccount.deposit(500.00);
+        genericAccount.accountSummary();
+
+        genericAccount.withdrawal(150.00);
+        genericAccount.accountSummary();
+        System.out.printf("Current Balance via getBalance(): $%.2f\n", genericAccount.getBalance());
+
+        // Test standard insufficient funds
+        System.out.println("\nAttempting $500 Withdrawal:");
+        genericAccount.withdrawal(500.00); // Should fail
+        genericAccount.accountSummary();
+        
+        System.out.println("\n============================================\n");
+
+
+        System.out.println("--- Part 2: Testing CheckingAccount Subclass ---");
+        CheckingAccount checking = new CheckingAccount(0.015); // 1.5% interest rate
+        
+        // Use inherited Setters
+        checking.setFirstName("Bob");
+        checking.setLastName("Johnson");
+        checking.setAccountID(2002);
+        
+        // Deposit using inherited method
+        checking.deposit(200.00);
+
+        // Test displayAccount() which includes interest rate
+        checking.displayAccount(); 
+
+        // 1. Test standard withdrawal (should succeed)
+        System.out.println("Attempting standard withdrawal:");
+        checking.withdrawal(50.00); // Balance: 200 - 50 = 150.00
+        checking.displayAccount();
+
+        // 2. Test Overdraft withdrawal (should trigger fee)
+        System.out.println("Attempting Overdraft withdrawal (calling inherited withdrawal method):");
+        // Balance is 150.00. Withdrawal of 200.00 is overdraft.
+        // New Balance = 150.00 - 200.00 - 30.00 = -80.00
+        checking.withdrawal(200.00); 
+        checking.displayAccount();
+
+        // Test calling the processWithdrawal method directly
+        System.out.println("Attempting another Overdraft withdrawal (calling processWithdrawal directly):");
+        // Balance is -80.00. Withdrawal of 10.00 is overdraft.
+        // New Balance = -80.00 - 10.00 - 30.00 = -120.00
+        checking.processWithdrawal(10.00);
+        checking.displayAccount();
+    }
+}

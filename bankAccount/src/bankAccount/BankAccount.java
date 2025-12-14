@@ -24,7 +24,7 @@ public class BankAccount {
 	}
 
 	// withdrawal()
-	public void withdrawal(double amount) { // <-- Name corrected from 'withdrawl' to 'withdrawal'
+	public void withdrawal(double amount) { 
 		if (amount > 0) {
 			if (this.balance >= amount) {
 				this.balance -= amount;

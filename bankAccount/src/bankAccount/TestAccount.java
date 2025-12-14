@@ -40,20 +40,17 @@ public class TestAccount {
 
         // 1. Test standard withdrawal 
         System.out.println("Attempting standard withdrawal:");
-        checking.withdrawal(50.00); // Balance: 200 - 50 = 150.00
+        checking.withdrawal(50.00); 
         checking.displayAccount();
 
         // 2. Test Overdraft withdrawal (should trigger fee)
         System.out.println("Attempting Overdraft withdrawal (calling inherited withdrawal method):");
-        // Balance is 150.00. Withdrawal of 200.00 is overdraft.
-        // New Balance = 150.00 - 200.00 - 30.00 = -80.00
         checking.withdrawal(200.00); 
         checking.displayAccount();
 
         // Test calling the processWithdrawal method directly
         System.out.println("Attempting another Overdraft withdrawal (calling processWithdrawal directly):");
-        // Balance is -80.00. Withdrawal of 10.00 is overdraft.
-        // New Balance = -80.00 - 10.00 - 30.00 = -120.00
+
         checking.processWithdrawal(10.00);
         checking.displayAccount();
         

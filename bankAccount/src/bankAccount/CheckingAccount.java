@@ -25,7 +25,7 @@ public class CheckingAccount extends BankAccount {
     public void applyInterestAndDeposit(double depositAmount) {
   	    double interest = getBalance() * this.interestRate;
   	    
-        // Corrected calculation: Current Balance + Deposit Amount + Calculated Interest
+       
   	    double newBalance = getBalance() + depositAmount + interest;
 
         setBalance(newBalance);

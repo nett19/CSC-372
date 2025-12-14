@@ -2,20 +2,39 @@ package bankAccount;
 
 public class CheckingAccount extends BankAccount {
 
-	// new attribute
 	private double interestRate;
 	private static final double OVERDRAFT_FEE = 30.0;
-	
-	// Constructor
-	public CheckingAccount(double interestRate) {
-		super(); // Calls the BankAccount constructor
-		this.interestRate = interestRate;
+    
+   
+    // Passes inherited account details to the superclass constructor
+	public CheckingAccount(String accountNumber, double initialBalance, double interestRate) {
+			super(); 
+			
+			this.interestRate = interestRate;
 	}
+	// Getter and Setter for interestRate
+    public double getInterestRate() {
+        return interestRate;
+    }
+
+    public void setInterestRate(double interestRate) {
+        this.interestRate = interestRate *100;
+    }
+    
+    
+    public void applyInterestAndDeposit(double depositAmount) {
+  	    double interest = getBalance() * this.interestRate;
+  	    
+        // Corrected calculation: Current Balance + Deposit Amount + Calculated Interest
+  	    double newBalance = getBalance() + depositAmount + interest;
+
+        setBalance(newBalance);
+        
+        System.out.printf("Interest applied (%.2f%%): $%.2f\n", this.interestRate * 100,interest);    }
 	
 	// 1. withdrawal() - Overrides superclass 
 	@Override
 	public void withdrawal(double amount) {
-	    // Calls the method that implements the overdraft logic
 	    processWithdrawal(amount);
 	}
 
@@ -42,19 +61,14 @@ public class CheckingAccount extends BankAccount {
         }
     }
     
+	
     // displayAccount()
     public void displayAccount() {
         accountSummary(); 
         System.out.printf("Interest Rate: %.2f%%\n", this.interestRate * 100);
         System.out.println("-----------------------");
+        
     }
 
-    // Getter and Setter for interestRate
-    public double getInterestRate() {
-        return interestRate;
-    }
-
-    public void setInterestRate(double interestRate) {
-        this.interestRate = interestRate;
-    }
+    
 }

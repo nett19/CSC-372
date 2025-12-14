@@ -3,36 +3,34 @@ package bankAccount;
 public class BankAccount {
 
 	// fields
-	private String firstName;
-	private String lastName;
-	private int accountID;
-	private double balance;
+	public String firstName;
+	public String lastName;
+	public int accountID;
+	public double balance;
 
 	// constructor
 	public BankAccount() {
 		this.balance = 0.0;
 	}
 
-	// deposit() - CORRECTED printf SYNTAX
+	// deposit() - 
 	public void deposit(double amount) {
 		if (amount > 0) {
 			this.balance += amount;
-			// Corrected printf: using comma, \n, and correct end quotes/semicolon
 			System.out.printf("Deposit successful. $%.2f added to the account.\n", amount);
 		} else {
 			System.out.println("Deposit must be positive.");
 		}
 	}
 
-	// withdrawal() - CORRECTED NAME AND LOGIC STRUCTURE
+	// withdrawal()
 	public void withdrawal(double amount) { // <-- Name corrected from 'withdrawl' to 'withdrawal'
 		if (amount > 0) {
 			if (this.balance >= amount) {
 				this.balance -= amount;
-				// Corrected printf: used \n for newline
+				 
 				System.out.printf("Withdrawal successful. $%.2f subtracted.\n", amount);
 			} else {
-				// Correct placement for insufficient funds message
 				System.out.println("Insufficient funds for a standard withdrawal.");
 			}
 		} else {
@@ -40,8 +38,8 @@ public class BankAccount {
 		}
 	}
 
-	// accountSummary() - CORRECTED NAME (Case)
-	public void accountSummary() { // <-- Name corrected from 'accountsummary'
+	// accountSummary() 
+	public void accountSummary() { 
 		System.out.println("--- Account Summary ---");
 	    System.out.println("Account Holder: " + this.firstName + " " + this.lastName);
 	    System.out.println("Account ID: " + this.accountID);

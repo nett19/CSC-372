@@ -26,8 +26,7 @@ public class TestAccount {
 
 
         System.out.println("--- Part 2: Testing CheckingAccount Subclass ---");
-        CheckingAccount checking = new CheckingAccount(0.015); // 1.5% interest rate
-        
+        CheckingAccount checking = new CheckingAccount("2002", 200.00, 0.015);        
         // Use inherited Setters
         checking.setFirstName("Bob");
         checking.setLastName("Johnson");
@@ -39,7 +38,7 @@ public class TestAccount {
         // Test displayAccount() which includes interest rate
         checking.displayAccount(); 
 
-        // 1. Test standard withdrawal (should succeed)
+        // 1. Test standard withdrawal 
         System.out.println("Attempting standard withdrawal:");
         checking.withdrawal(50.00); // Balance: 200 - 50 = 150.00
         checking.displayAccount();
@@ -57,5 +56,7 @@ public class TestAccount {
         // New Balance = -80.00 - 10.00 - 30.00 = -120.00
         checking.processWithdrawal(10.00);
         checking.displayAccount();
+        
+        
     }
 }

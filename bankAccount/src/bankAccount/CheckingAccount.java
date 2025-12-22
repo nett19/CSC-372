@@ -5,13 +5,22 @@ public class CheckingAccount extends BankAccount {
 	private double interestRate;
 	private static final double OVERDRAFT_FEE = 30.0;
     
-   
-    // Passes inherited account details to the superclass constructor
-	public CheckingAccount(String accountNumber, double initialBalance, double interestRate) {
-			super(); 
-			
-			this.interestRate = interestRate;
+	public CheckingAccount(double interestRate) {
+        super(); // Sets balance to 0.0 via BankAccount constructor
+        this.interestRate = interestRate;
+    }
+ 
+	public CheckingAccount(int accountID, double initialBalance, double interestRate) {
+	    super(); // Calls BankAccount constructor
+	    
+	    // Use the setters inherited from BankAccount
+	    this.setAccountID(accountID);
+	    this.setBalance(initialBalance);
+	    
+	    // Set the checking-specific attribute
+	    this.interestRate = interestRate;
 	}
+	
 	// Getter and Setter for interestRate
     public double getInterestRate() {
         return interestRate;

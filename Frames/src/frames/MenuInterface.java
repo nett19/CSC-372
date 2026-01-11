@@ -22,12 +22,18 @@ public class MenuInterface extends JFrame {
         textBox = new JTextArea();
         add(new JScrollPane(textBox), BorderLayout.CENTER);
 
-        // random green hue 
-        Random rand = new Random();
-        // Generates a green value 
-        int g = rand.nextInt(156) + 100; 
-        persistentGreenHue = new Color(0, g, 0);
-
+     // NEW Option 3: Select Custom Background Color
+        JMenuItem item3 = new JMenuItem("Select Background Color...");
+        item3.addActionListener(e -> {
+            // Opens the standard Java Color Chooser dialog
+            Color selectedColor = JColorChooser.showDialog(this, "Pick a Background Color", textBox.getBackground());
+            
+            if (selectedColor != null) {
+                textBox.setBackground(selectedColor);
+                // Set opaque to true to ensure the color shows up
+                textBox.setOpaque(true);
+            }
+        });
         // Create the Menu Bar
         JMenuBar menuBar = new JMenuBar();
         JMenu menu = new JMenu("Controls");
@@ -50,13 +56,7 @@ public class MenuInterface extends JFrame {
             }
         });
 
-        // Option 3 Change Background to Random Green Hue
-        JMenuItem item3 = new JMenuItem("Change Background Color");
-        item3.addActionListener(e -> {
-            // Changes the background of the panel and text area
-            textBox.setBackground(persistentGreenHue);
-            getContentPane().setBackground(persistentGreenHue);
-        });
+       
 
         // Option 4: Exit
         JMenuItem item4 = new JMenuItem("Exit");

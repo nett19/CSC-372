@@ -15,28 +15,27 @@ public class BankAccount {
 
 	// deposit() - 
 	public void deposit(double amount) {
-		if (amount > 0) {
-			this.balance += amount;
-			System.out.printf("Deposit successful. $%.2f added to the account.\n", amount);
-		} else {
-			System.out.println("Deposit must be positive.");
-		}
-	}
+        if (amount > 0) {
+            this.balance += amount;
+            System.out.printf("Deposit successful. $%.2f added to the account.\n", amount);
+        } else {
+            System.out.println("Deposit must be positive.");
+        }
+    }
 
 	// withdrawal()
 	public void withdrawal(double amount) { 
-		if (amount > 0) {
-			if (this.balance >= amount) {
-				this.balance -= amount;
-				 
-				System.out.printf("Withdrawal successful. $%.2f subtracted.\n", amount);
-			} else {
-				System.out.println("Insufficient funds for a standard withdrawal.");
-			}
-		} else {
-			System.out.println("Withdrawal amount must be positive.");
-		}
-	}
+        if (amount > 0) {
+            if (this.balance >= amount) {
+                this.balance -= amount;
+                System.out.printf("Withdrawal successful. $%.2f subtracted.\n", amount);
+            } else {
+                System.out.println("Insufficient funds for a standard withdrawal.");
+            }
+        } else {
+            System.out.println("Withdrawal amount must be positive.");
+        }
+    }
 
 	// accountSummary() 
 	public void accountSummary() { 

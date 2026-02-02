@@ -4,7 +4,7 @@ import java.util.ArrayList;
 import java.util.Comparator;
 
 public class SelectionSort {
-    public static void sort(ArrayList<Student> list, Comparator<Student> comparator) {
+    public static void sort(ArrayList<User> list, Comparator<User> comparator) {
         int n = list.size();
 
         for (int i = 0; i < n - 1; i++) {
@@ -14,7 +14,7 @@ public class SelectionSort {
                     minIndex = j;
                 }
             }
-            Student temp = list.get(minIndex);
+            User temp = list.get(minIndex);
             list.set(minIndex, list.get(i));
             list.set(i, temp);
         }
